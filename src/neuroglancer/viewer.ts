@@ -144,7 +144,7 @@ export interface ViewerOptions extends ViewerUIOptions, VisibilityPrioritySpecif
   resetStateWhenEmpty: boolean;
 }
 
-const defaultViewerOptions = {
+const defaultViewerOptions = OVERWRITE_DEFAULT_VIEWER_OPTIONS || {
   showLayerDialog: true,
   resetStateWhenEmpty: true,
 };

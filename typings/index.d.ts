@@ -7,3 +7,5 @@
 /// <reference path="../node_modules/@types/text-encoding/index.d.ts" />
 /// <reference path="../node_modules/@types/webgl2/index.d.ts" />
 /// <reference path="../node_modules/@types/webpack-env/index.d.ts" />
+
+declare var OVERWRITE_DEFAULT_VIEWER_OPTIONS: any
