@@ -51,7 +51,7 @@ class PrecomputedSkeletonSource extends
   }
 }
 
-function resolvePath(a: string, b: string) {
+export function resolvePath(a: string, b: string) {
   const outputParts = a.split('/');
   for (const part of b.split('/')) {
     if (part === '..') {
@@ -479,7 +479,7 @@ async function getMeshDataSource(options: GetDataSourceOptions, url: string): Pr
 
 const urlPattern = /^([^#]*)(?:#(.*))?$/;
 
-function parseProviderUrl(providerUrl: string) {
+export function parseProviderUrl(providerUrl: string) {
   let [, url, fragment] = providerUrl.match(urlPattern)!;
   if (url.endsWith('/')) {
     url = url.substring(0, url.length - 1);
@@ -488,7 +488,7 @@ function parseProviderUrl(providerUrl: string) {
   return {url, parameters};
 }
 
-function unparseProviderUrl(url: string, parameters: any) {
+export function unparseProviderUrl(url: string, parameters: any) {
   const fragment = unparseQueryStringParameters(parameters);
   if (fragment) {
     url += `#${fragment}`;

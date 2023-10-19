@@ -90,6 +90,13 @@ const DEFAULT_DATA_SOURCES = exports.DEFAULT_DATA_SOURCES = [
       'neuroglancer/async_computation/vtk_mesh',
     ],
   },
+  {
+    source: 'neuroglancer/datasource/deepzoom',
+    asyncComputation: [
+      'neuroglancer/async_computation/decode_jpeg',
+      'neuroglancer/async_computation/decode_png',
+    ],
+  },
 ];
 
 const DEFAULT_SUPPORTED_LAYERS = exports.DEFAULT_SUPPORTED_LAYERS = [
@@ -236,6 +243,10 @@ function getBaseConfig(options) {
             {loader: require.resolve('raw-loader')},
             {loader: require.resolve('glsl-strip-comments-loader')},
           ],
+        },
+        {
+          test: /\.wasm$/,
+          loader: 'url-loader',
         },
       ],
     },

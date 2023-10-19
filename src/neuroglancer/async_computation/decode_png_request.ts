@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright 2019 Google Inc.
+ * Copyright 2022 William Silversmith
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import {asyncComputation} from 'neuroglancer/async_computation';
 
-/**
- * @file Permits webpack url-loader modules to be imported as strings.
- */
-
-declare module 'url-loader!*' {
-  const value: string;
-  export default value;
+export interface DecodedImage {
+    width: number;
+    height: number;
+    numComponents: number;
+    uint8Array: Uint8Array;
 }
 
-declare module '*.wasm' {
-  const value: string;
-  export default value;
-}
+export const decodePng = asyncComputation<( 
+    data: Uint8Array, width: number|undefined, height: number|undefined, 
+    numComponents: number|undefined, bytesPerPixel:number, 
+    convertToGrayscale: boolean
+) => DecodedImage>('decodePng');

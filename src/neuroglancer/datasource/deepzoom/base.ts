@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright 2019 Google Inc.
+ * Copyright 2016 Google Inc., 2023 Gergely Csucs
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,16 +14,18 @@
  * limitations under the License.
  */
 
-/**
- * @file Permits webpack url-loader modules to be imported as strings.
- */
-
-declare module 'url-loader!*' {
-  const value: string;
-  export default value;
+export enum ImageTileEncoding {
+  JPG,
+  JPEG,
+  PNG
 }
 
-declare module '*.wasm' {
-  const value: string;
-  export default value;
+export class ImageTileSourceParameters {
+  url: string;
+  encoding: ImageTileEncoding;
+  format: string;
+  tilesize: number;
+  overlap: number;
+
+  static RPC_ID = 'deepzoom/ImageTileSource';
 }
